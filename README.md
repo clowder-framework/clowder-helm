@@ -1,91 +1,180 @@
-# Helm Charts
+# Clowder
 
-Use this repository to submit NCSA Charts for Helm. Charts are curated application definitions for Helm. For more information about installing and using Helm, see its
-[README.md](https://github.com/helm/helm/tree/master/README.md). To get a quick introduction to Charts see this [chart document](https://github.com/helm/helm/blob/master/docs/charts.md).
+[Clowder](https://clowderframework.org/) is an open source datamanagement for long tail data.
 
-## Where to find us
+## TL;DR;
 
-For general Helm Chart discussions join the Helm Charts (#charts) room in the [Kubernetes](http://slack.kubernetes.io/).
-
-For issues and support for Helm and Charts see [Support Channels](CONTRIBUTING.md#support-channels).
-
-## How do I enable the NCSA repository?
-
-To add the Incubator charts for your local client, run `helm repo add`:
-
-```
-$ helm repo add ncsa https://opensource.ncsa.illinois.edu/charts/
-"ncsa" has been added to your repositories
+```bash
+$ helm install ncsa/clowder
 ```
 
+## Introduction
 
-You can then run `helm search ncsa` to see the charts.
+Need to be written, this document is still a work in progress.
 
-## How do I install these charts?
+<!--This chart bootstraps a [Clowder](https://github.com/bitnami/bitnami-docker-rabbitmq) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
-After installing the helm repository (see above), you can use `helm install ncsa/<chart>`.
-
-For more information on using Helm, refer to the [Helm's documentation](https://github.com/kubernetes/helm#docs).
-
-## Chart Format
-
-Take a look at the [alpine example chart](https://github.com/helm/helm/tree/master/docs/examples/alpine) and the [nginx example chart](https://github.com/helm/helm/tree/master/docs/examples/nginx) for reference when you're writing your first few charts.
-
-Before contributing a Chart, become familiar with the format. Note that the project is still under active development and the format may still evolve a bit.
-
-## Repository Structure
-
-This GitHub repository contains the source for the packaged and versioned charts released in the [`https://opensource.ncsa.illinois.edu/charts/`](https://opensource.ncsa.illinois.edu/charts/) (the Chart Repository).
-
-The Charts in the `ncsa/` directory in the master branch of this repository match the latest packaged Chart in the Chart Repository, though there may be previous versions of a Chart available in that Chart Repository.
-
-The purpose of this repository is to provide a place for maintaining and contributing official Charts, with CI processes in place for managing the releasing of Charts into the Chart Repository.
-
-## Contributing a Chart
-
-<!--We'd love for you to contribute a Chart that provides a useful application or service for Kubernetes. Please read our [Contribution Guide](CONTRIBUTING.md) for more information on how you can contribute Charts.
-
-Note: We use the same [workflow](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#workflow),
-[License](LICENSE) and [Contributor License Agreement](CONTRIBUTING.md) as the main Kubernetes repository.
+Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters. This chart has been tested to work with NGINX Ingress, cert-manager, fluentd and Prometheus on top of the [BKPR](https://kubeprod.io/).
 -->
-## Owning and Maintaining A Chart
 
-Individual charts can be maintained by one or more users of GitHub. When someone maintains a chart they have the access to merge changes to that chart. To have merge access to a chart someone needs to:
+## Prerequisites
 
-1. Be listed on the chart, in the `Chart.yaml` file, as a maintainer. If you need sponsors and have contributed to the chart, please reach out to the existing maintainers, or if you are having trouble connecting with them, please reach out to one of the [OWNERS](OWNERS) of the charts repository.
-1. Be invited (and accept your invite) as a read-only collaborator on [this repo](https://github.com/helm/charts). This is required for @k8s-ci-robot [PR comment interaction](https://github.com/kubernetes/community/blob/master/contributors/guide/pull-requests.md).
-1. An OWNERS file needs to be added to a chart. That OWNERS file should list the maintainers' GitHub login names for both the reviewers and approvers sections. For an example see the [Drupal chart](stable/drupal/OWNERS). The `OWNERS` file should also be appended to the `.helmignore` file.
+- Kubernetes 1.16+
+- helm 3
+- PV provisioner support in the underlying infrastructure
 
-Once these three steps are done a chart approver can merge pull requests following the directions in the [REVIEW_GUIDELINES.md](REVIEW_GUIDELINES.md) file.
+## Installing the Chart
 
-<!--## Trusted Collaborator
+To install the chart with the release name `my-release`:
 
-The `pull-charts-e2e` test run, that installs a chart to test it, is required before a pull request can be merged. These tests run automatically for members of the Helm Org and for chart [repository collaborators](https://help.github.com/articles/adding-outside-collaborators-to-repositories-in-your-organization/). For regular contributors who are trusted, in a manner similar to Kubernetes community members, we have trusted collaborators. These individuals can have their tests run automatically as well as mark other pull requests as ok to test by adding a comment of `/ok-to-test` on pull requests.
+```bash
+$ helm install --name my-release ncsa/clowder
+```
 
-There are two paths to becoming a trusted collaborator. One only needs follow one of them.
+The command deploys Clowder on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation. This will also install MongoDB, RabbitMQ, elasticsearch as well as some extractors.
 
-1. If you are a Kubernetes GitHub org member and have your Kubernetes org membership public you can become a trusted collaborator for Helm Charts
-2. Get sponsorship from one of the Charts Maintainers listed in the OWNERS file at the root of this repository
+> **Tip**: List all releases using `helm list`
 
-The process to get added is:
+## Uninstalling the Chart
 
-* File an issue asking to be a trusted collaborator
-* A Helm Chart Maintainer can then add the user as a read only collaborator to the repository
--->
-## Review Process
+To uninstall/delete the `my-release` deployment:
 
-For information related to the review procedure used by the Chart repository maintainers, see [Merge approval and release process](CONTRIBUTING.md#merge-approval-and-release-process).
+```bash
+$ helm delete my-release
+```
 
-### Stale Pull Requests and Issues
+The command removes all the Kubernetes components associated with the chart and deletes the release.
 
-Pull Requests and Issues that have no activity for 30 days automatically become stale. After 30 days of being stale, without activity, they become rotten. Pull Requests and Issues can rot for 30 days and then they are automatically closed. This is the standard stale process handling for all repositories on the Kubernetes GitHub organization.
+## Configuration
 
-## Supported Kubernetes Versions
+Needs to be written
 
-This chart repository supports the latest and previous minor versions of Kubernetes. For example, if the latest minor release of Kubernetes is 1.8 then 1.7 and 1.8 are supported. Charts may still work on previous versions of Kubernertes even though they are outside the target supported window.
+The following table lists the configurable parameters of the Clowder chart and their default values.
 
-To provide that support the API versions of objects should be those that work for both the latest minor release and the previous one.
+| Parameter                            | Description                                      | Default                                                 |
+| ------------------------------------ | ------------------------------------------------ | -------------------------------------------------------
+| replicaCount | Number of instances to run of clowder. | 1
+| memory | Memory for the clowder application in MB. | 4096
+| commKey | Administrator key. This key will give administrator level access to Clowder and is not associated with any user. | ""
+| secretKey | Secret key used for cookies. This should be set the same for all clowder instances in a replicated setup. Best is for kubernetes to generate a random key. | ""
+| initialAdmins | List of initial admins in clowder, this is a list of email addresses and these will always be admins. | ""
+| registerThroughAdmins | Should the admin be required to approve all new users. Setting this to false will result in all new users immediately be given access to Clowder. | true
+| idleTimeoutInMinutes | Number of minutes you stay logged into clowder without any interactions. | 30
+| extraOptions | List of additional options to be passed to the clowder process. | []
+| extraPlugins | List of additional plugins should be enabled. This will allow you to add additional login mechanisms. | []
+| extraConfig | List of additional configuration options to set for clowder. | []
+| monitor.replicaCount | number of instances to run of monitor. | 1
 
-## Status of the Project
+Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
-This project is still under active development, so you might run into [issues](https://github.com/helm/charts/issues). If you do, please don't be shy about letting us know, or better yet, contribute a fix or feature.
+```bash
+$ helm install --name my-release \
+  --set clowderkey=ncsa \
+    ncsa/clowder
+```
+
+The above command sets the clowder admin key `ncsa`.
+
+Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
+
+```bash
+$ helm install --name my-release -f values.yaml ncsa/clowder
+```
+
+> **Tip**: You can use the default [values.yaml](values.yaml)
+
+## Users
+
+You can add a list of initial users to clowder. For example the following snippet will add an administrator with
+email address `admin@example.com` and password `secret`. 
+
+```
+users:
+  - email: admin@example.com
+    password: secret
+    firstname: Admin
+    lastname: User
+    admin: true
+```
+
+## Persistence
+
+Clowder can use a disk storage (default) or S3. In case of S3 it can either use an existing bucket, or use minio to
+provide the bucket.
+
+### Existing PersistentVolumeClaims
+
+1. Create the PersistentVolume
+1. Create the PersistentVolumeClaim
+1. Install the chart
+
+```bash
+$ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
+```
+
+## ChangeLog
+
+### 0.8.0
+
+- update clowder to 1.13.0
+- update extractors:
+  - extractors-digest to 2.1.6
+
+### 0.7.0
+
+- update clowder to 1.12.2
+- can set extra options for clowder `extraOptions`
+- can set the memory used by clowder using `memory` (default is 2GB)
+- update extractors:
+  - extractors-digest to 2.1.5
+  - extractors-image-preview to 2.1.5
+  - extractors-image-metadata to 2.1.5
+  - extractors-audio-preview to 2.1.5
+  - extractors-pdf-preview to 2.1.5
+  - extractors-video-preview to 2.1.5
+
+### 0.6.2
+
+- update clowder to 1.11.2
+- can set replicas for monitor independent from clowder
+- update extractors:
+  - extractors-digest to 2.1.4
+  - extractors-image-preview to 2.1.4
+  - extractors-image-metadata to 2.1.4
+  - extractors-audio-preview to 2.1.4
+  - extractors-pdf-preview to 2.1.4
+  - extractors-video-preview to 2.1.4
+  - extractors-clamav to 1.0.3
+
+### 0.6.1
+
+- update clowder to 1.11.1
+- ability to set idle timeout (default is 30 min)
+- use new healthz endpoint in clowder for ready checks.
+
+### 0.6.0
+
+- update clowder to 1.11.0
+- update RabbitMQ to 7.6.7
+- updated most core extractors to newer version
+- added virus checker extractor
+- added `extraConfig` and `extraPlugins` to allow finer control of clowder
+  - this can be used to add additional login options to clowder
+- monitor is now deployed at https://\<server\>/\<path\>/monitor/index.html
+
+### 0.5.0
+
+- update clowder to 1.9.0
+- now uses helm3 syntax for chart
+- added minio for storage option
+- secrets are now passed as environment variables not in configmap
+- user creation moved to init container for clowder, will prevent helm chart from timing out.
+
+### 0.2.0
+
+- update clowder to 1.8.0
+- make sure to use image.tag for containers
+
+### 0.0.1
+
+This is the first release of the helm chart
