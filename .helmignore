@@ -20,3 +20,9 @@
 .idea/
 *.tmproj
 .vscode/
+# github
+.github
+cr.yaml
+ct.yaml
+clowder-*.tgz
+.cr-release-packages
