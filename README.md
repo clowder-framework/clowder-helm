@@ -5,17 +5,13 @@
 ## TL;DR;
 
 ```bash
-$ helm install ncsa/clowder
+$ helm repo add ncsa https://opensource.ncsa.illinois.edu/charts/
+$ helm install clowder ncsa/clowder --set commKey=clowderiscool
 ```
 
 ## Introduction
 
-Need to be written, this document is still a work in progress.
-
-<!--This chart bootstraps a [Clowder](https://github.com/bitnami/bitnami-docker-rabbitmq) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
-
-Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters. This chart has been tested to work with NGINX Ingress, cert-manager, fluentd and Prometheus on top of the [BKPR](https://kubeprod.io/).
--->
+This chart bootstraps a [Clowder](https://github.com/clowder-framework/clowder) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
@@ -28,7 +24,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release ncsa/clowder
+$ helm install --name my-release ncsa/clowder --set commKey=clowderiscool
 ```
 
 The command deploys Clowder on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation. This will also install MongoDB, RabbitMQ, elasticsearch as well as some extractors.
@@ -113,6 +109,11 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 ```
 
 ## ChangeLog
+
+### 0.9.0
+
+- update clowder to 1.14.1
+- helm chart now in https://github.com/clowder-framework/clowder-helm
 
 ### 0.8.0
 

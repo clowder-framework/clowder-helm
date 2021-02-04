@@ -1,28 +1,47 @@
 apiVersion: v2
-version: 0.8.0
+type: application
+
+# Information about clowder.
 name: clowder
-appVersion: "1.13.0"
 icon: https://isda.ncsa.illinois.edu/~kooper/charts/images/clowder.png
-description: Open Source Data Management for Long Tail Data.
 home: https://clowderframework.org/
+description: >
+  Open Source Data Management for Long Tail Data. Clowder is a customizable and
+  scalable data management framework to support any data format and multiple
+  research domains.
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.9.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+appVersion: 1.14.1
+
+# List of people that maintain this helm chart.
 maintainers:
-- name: Rob Kooper
-  email: kooper@illinois.edu
+  - name: Rob Kooper
+    email: kooper@illinois.edu
+
+# Dependencies for clowder. Some of the dependencies are only installed if they
+# are enabled.
 dependencies:
-- name: mongodb
-  version: ~7.2
-  repository: https://charts.bitnami.com/bitnami
-  condition: mongodb.enabled
-- name: minio
-  version: ~3.4
-  repository: https://charts.bitnami.com/bitnami
-  condition: minio.enabled
-- name: rabbitmq
-  version: ~7.6
-  repository: https://charts.bitnami.com/bitnami
-  condition: rabbitmq.enabled
-- name: elasticsearch2
-  alias: elasticsearch
-  version: 0.2.1
-  repository: https://opensource.ncsa.illinois.edu/charts/
-  condition: elasticsearch.enabled
+  - name: mongodb
+    version: ~7.2
+    repository: https://charts.bitnami.com/bitnami
+    condition: mongodb.enabled
+  - name: minio
+    version: ~3.4
+    repository: https://charts.bitnami.com/bitnami
+    condition: minio.enabled
+  - name: rabbitmq
+    version: ~7.6
+    repository: https://charts.bitnami.com/bitnami
+    condition: rabbitmq.enabled
+  - name: elasticsearch2
+    alias: elasticsearch
+    version: 0.2.1
+    repository: https://opensource.ncsa.illinois.edu/charts/
+    condition: elasticsearch.enabled

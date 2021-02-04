@@ -1,5 +1,10 @@
 # generated helm charts folder
-charts/*.tar.gz
+charts
+
+# helm package
+.cr-release-packages
+clowder-*.tgz
+
 
 # custom values
 /secrets-*.yaml
