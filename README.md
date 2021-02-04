@@ -114,6 +114,11 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 
 ## ChangeLog
 
+### 0.9.0
+
+- update clowder to 1.14.1
+- helm chart now in https://github.com/clowder-framework/clowder-helm
+
 ### 0.8.0
 
 - update clowder to 1.13.0
