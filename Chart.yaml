@@ -25,6 +25,18 @@ maintainers:
   - name: Rob Kooper
     email: kooper@illinois.edu
 
+# location of source code
+sources:
+  - https://github.com/clowder-framework/clowder
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm Chart
+      url: https://github.com/clowder-framework/clowder-helm
+  artifacthub.io/changes: |
+    - update clowder to 1.14.1
+    - helm chart now in https://github.com/clowder-framework/clowder-helm
+
 # Dependencies for clowder. Some of the dependencies are only installed if they
 # are enabled.
 dependencies:
