@@ -44,7 +44,7 @@ spec:
 {{- $mongodburi := include "clowder.mongodburi" . }}
 {{- range $index, $element := .Values.users }}
         - name: mongo-add-user-{{ $index }}
-          image: "{{ $.Values.image.repository }}/mongo-init:{{ $.Values.image.tag }}"
+          image: "{{ $.Values.image.repository }}/mongo-init:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
           imagePullPolicy: {{ $.Values.image.pullPolicy }}
           env:
             - name: MONGO_URI
@@ -73,7 +73,7 @@ spec:
 {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
             - /home/clowder/clowder.sh

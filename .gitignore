@@ -5,7 +5,7 @@ charts
 .cr-release-packages
 clowder-*.tgz
 
-
 # custom values
-/secrets-*.yaml
-/values-*.yaml
+secrets-*.yaml
+values-*.yaml
+*.values.yaml

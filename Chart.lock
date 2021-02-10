@@ -10,6 +10,6 @@ dependencies:
   version: 7.6.9
 - name: elasticsearch2
   repository: https://opensource.ncsa.illinois.edu/charts/
-  version: 0.2.1
-digest: sha256:6a590b13f66b9e7564ad234c8392551e3d190fef4c202d66ffcb509a45763421
-generated: "2021-02-04T16:17:53.437178-06:00"
+  version: 0.2.2
+digest: sha256:6f600ded45e6ecefc54382e7d4b12a9c4f8739c47c4232b4f8992066fbb256ba
+generated: "2021-02-09T20:43:39.752242-06:00"

@@ -33,7 +33,7 @@ spec:
                   key: rabbitmq-uri
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}/monitor:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}/monitor:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: monitor
