@@ -110,6 +110,12 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 
 ## ChangeLog
 
+### 0.9.1
+
+- Forgot to increate clowder version tag.
+- Now using appVersion for clowder version tag by default.
+- Using `networking.k8s.io/v1` for ingress rules
+
 ### 0.9.0
 
 - update clowder to 1.14.1
