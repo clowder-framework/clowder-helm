@@ -13,12 +13,12 @@ description: >
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.9.1
+version: 0.10.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 1.14.1
+appVersion: 1.15.0
 
 # List of people that maintain this helm chart.
 maintainers:
@@ -34,9 +34,13 @@ annotations:
     - name: Helm Chart
       url: https://github.com/clowder-framework/clowder-helm
   artifacthub.io/changes: |
-    - Forgot to increate clowder version tag.
-    - Now using appVersion for clowder version tag by default.
-    - Using `networking.k8s.io/v1` for ingress rules
+    - Complete rewrite of the messagebus code
+    - Added new previewers (Vega and FBX)
+    - Can filter search by upload/creation dates
+    - Disabled download if file is not processed yet
+    - Fixed bug when creating spaces through the api.
+    - Return headers when calling /api/me
+    - Updated core extractor versions
 
 # Dependencies for clowder. Some of the dependencies are only installed if they
 # are enabled.

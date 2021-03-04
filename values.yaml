@@ -129,15 +129,15 @@ extractors:
     #   - name: foo
     #     value: "bar"
   image-preview:
-    image: clowder/extractors-image-preview:2.1.5
+    image: clowder/extractors-image-preview:2.2.1
   image-metadata:
-    image: clowder/extractors-image-metadata:2.1.5
+    image: clowder/extractors-image-metadata:2.1.6
   audio-preview:
-    image: clowder/extractors-audio-preview:2.1.5
+    image: clowder/extractors-audio-preview:2.1.6
   pdf-preview:
-    image: clowder/extractors-pdf-preview:2.1.5
+    image: clowder/extractors-pdf-preview:2.1.6
   video-preview:
-    image: clowder/extractors-video-preview:2.1.5
+    image: clowder/extractors-video-preview:2.2.0
   clamav:
     image: clowder/extractors-clamav:1.0.3
 

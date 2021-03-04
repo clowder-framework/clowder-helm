@@ -1,3 +1,6 @@
+# development
+.idea
+
 # generated helm charts folder
 charts
 

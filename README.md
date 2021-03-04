@@ -110,6 +110,16 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 
 ## ChangeLog
 
+### 0.10.0
+
+- Complete rewrite of the messagebus code
+- Added new previewers (Vega and FBX)
+- Can filter search by upload/creation dates
+- Disabled download if file is not processed yet
+- Fixed bug when creating spaces through the api.
+- Return headers when calling /api/me
+- Updated core extractor versions
+
 ### 0.9.1
 
 - Forgot to increate clowder version tag.
