@@ -110,6 +110,14 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 
 ## ChangeLog
 
+### 0.10.1
+
+- Update clowder to 0.15.1
+  - Several views were throwing errors trying to access a None value in EventSinkService when a user was not logged in.
+  - Changed EventSinkService logging to debug to minimize chatter.
+  - Don't automatically create eventsink queue and bind it to eventsink exchange. Let clients do that so that we don't have a queue for the eventsink filling up if there are no consumers.
+- Update digest extractor to 2.2.0
+
 ### 0.10.0
 
 - Complete rewrite of the messagebus code

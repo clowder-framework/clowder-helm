@@ -121,7 +121,7 @@ smtp:
 ## env          : additional environment variables to pass to extractor.
 extractors:
   file-digest:
-    image: clowder/extractors-digest:2.1.6
+    image: clowder/extractors-digest:2.2.0
     #enabled: true
     #replicaCount: 1
     #pullPolicy: Always
