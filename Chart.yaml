@@ -56,6 +56,7 @@ annotations:
       url: https://github.com/clowder-framework/clowder-helm
   artifacthub.io/changes: |
     - Update clowder to 0.16.0
-    - clowder: Archiving updates
-    - clowder: Sorting in search api
-    - Disablee rabbitmq plugin
+    - Archiving updates in Clowder
+    - Sorting in search api in Clowder
+    - Disable rabbitmq plugin
+
