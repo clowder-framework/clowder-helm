@@ -13,12 +13,12 @@ description: >
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.10.1
+version: 0.11.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 1.15.1
+appVersion: 1.16.0
 
 # List of people that maintain this helm chart.
 maintainers:
@@ -55,8 +55,7 @@ annotations:
     - name: Helm Chart
       url: https://github.com/clowder-framework/clowder-helm
   artifacthub.io/changes: |
-    - Update clowder to 0.15.1
-      - Several views were throwing errors trying to access a None value in EventSinkService when a user was not logged in.
-      - Changed EventSinkService logging to debug to minimize chatter.
-      - Don't automatically create eventsink queue and bind it to eventsink exchange. Let clients do that so that we don't have a queue for the eventsink filling up if there are no consumers.
-    - Update digest extractor to 2.2.0
+    - Update clowder to 0.16.0
+    - clowder: Archiving updates
+    - clowder: Sorting in search api
+    - Disablee rabbitmq plugin

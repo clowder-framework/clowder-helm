@@ -6,9 +6,6 @@ metadata:
 {{ include "clowder.labels" . | indent 4 }}
 data:
   play.plugins: |-
-{{- if .Values.rabbitmq.enabled }}
-    9992:services.RabbitmqPlugin
-{{- end }}
 {{- if .Values.elasticsearch.enabled }}
     10002:services.ElasticsearchPlugin
 {{- end }}
