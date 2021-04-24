@@ -110,6 +110,10 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 
 ## ChangeLog
 
+### 0.11.1
+
+- Fixed problem with storageClassName in persistence
+
 ### 0.11.0
 
 - Update clowder to 0.16.0
