@@ -7,21 +7,25 @@ metadata:
   name: {{ $fullName }}-monitor
   labels:
 {{ include "clowder.labels" . | indent 4 }}
-  {{- with .Values.ingress.annotations }}
+  {{- if or .Values.ingress.tls .Values.ingress.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
+    {{- if .Values.ingress.tls }}
+    kubernetes.io/tls-acme: "true"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    {{- end }}
+    {{- with .Values.ingress.annotations }}
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
   {{- end }}
 spec:
-{{- if .Values.ingress.tls }}
+  {{- if .Values.ingress.tls }}
   tls:
-  {{- range .Values.ingress.tls }}
     - hosts:
-      {{- range .hosts }}
+        {{- range .Values.ingress.hosts }}
         - {{ . | quote }}
       {{- end }}
-      secretName: {{ .secretName }}
+      secretName: {{ .Values.ingress.secretName | default (printf "%s-tls" (include "clowder.fullname" .)) }}
   {{- end }}
-{{- end }}
   rules:
 {{- if .Values.ingress.hosts }}
   {{- range .Values.ingress.hosts }}

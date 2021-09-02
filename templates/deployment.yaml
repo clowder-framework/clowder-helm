@@ -41,7 +41,6 @@ spec:
             mountPath: /home/clowder/data
 {{- end }}
 {{- if .Values.users }}
-{{- $mongodburi := include "clowder.mongodburi" . }}
 {{- range $index, $element := .Values.users }}
         - name: mongo-add-user-{{ $index }}
           image: "{{ $.Values.image.repository }}/mongo-init:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
@@ -149,6 +148,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
         - name: custom-volume
+          # TODO how to deal with custom previews/javascript etc.
           configMap:
             name: {{ include "clowder.fullname" . }}-config
             items:

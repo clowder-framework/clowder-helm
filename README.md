@@ -110,23 +110,24 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 
 ## ChangeLog
 
-### 0.12.0
+### 0.13.0
+- Update clowder to version [1.18.1](https://github.com/clowder-framework/clowder/releases/tag/v1.18.1)
+- Also see updates for version [1.18.0](https://github.com/clowder-framework/clowder/releases/tag/v1.18.0)
+- fix TLS for nginx and traefik v2.
 
+### 0.12.0
 - Update clowder to version [1.17.0](https://github.com/clowder-framework/clowder/releases/tag/v1.17.0)
 
 ### 0.11.1
-
 - Fixed problem with storageClassName in persistence
 
 ### 0.11.0
-
 - Update clowder to 0.16.0
   - Archiving updates
   - Sorting in search api
 - Disable rabbitmq plugin
 
 ### 0.10.1
-
 - Update clowder to 0.15.1
   - Several views were throwing errors trying to access a None value in EventSinkService when a user was not logged in.
   - Changed EventSinkService logging to debug to minimize chatter.
@@ -134,7 +135,6 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 - Update digest extractor to 2.2.0
 
 ### 0.10.0
-
 - Complete rewrite of the messagebus code
 - Added new previewers (Vega and FBX)
 - Can filter search by upload/creation dates
@@ -144,24 +144,20 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 - Updated core extractor versions
 
 ### 0.9.1
-
 - Forgot to increate clowder version tag.
 - Now using appVersion for clowder version tag by default.
 - Using `networking.k8s.io/v1` for ingress rules
 
 ### 0.9.0
-
 - update clowder to 1.14.1
 - helm chart now in https://github.com/clowder-framework/clowder-helm
 
 ### 0.8.0
-
 - update clowder to 1.13.0
 - update extractors:
   - extractors-digest to 2.1.6
 
 ### 0.7.0
-
 - update clowder to 1.12.2
 - can set extra options for clowder `extraOptions`
 - can set the memory used by clowder using `memory` (default is 2GB)
@@ -174,7 +170,6 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
   - extractors-video-preview to 2.1.5
 
 ### 0.6.2
-
 - update clowder to 1.11.2
 - can set replicas for monitor independent from clowder
 - update extractors:
@@ -187,13 +182,11 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
   - extractors-clamav to 1.0.3
 
 ### 0.6.1
-
 - update clowder to 1.11.1
 - ability to set idle timeout (default is 30 min)
 - use new healthz endpoint in clowder for ready checks.
 
 ### 0.6.0
-
 - update clowder to 1.11.0
 - update RabbitMQ to 7.6.7
 - updated most core extractors to newer version
@@ -203,7 +196,6 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 - monitor is now deployed at https://\<server\>/\<path\>/monitor/index.html
 
 ### 0.5.0
-
 - update clowder to 1.9.0
 - now uses helm3 syntax for chart
 - added minio for storage option
@@ -211,10 +203,8 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 - user creation moved to init container for clowder, will prevent helm chart from timing out.
 
 ### 0.2.0
-
 - update clowder to 1.8.0
 - make sure to use image.tag for containers
 
 ### 0.0.1
-
 This is the first release of the helm chart

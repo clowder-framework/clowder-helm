@@ -55,8 +55,12 @@ mongodb://{{ include "clowder.fullname" . }}-mongodb:27017/clowder
 RabbitMQ URI
 */}}
 {{- define "clowder.rabbitmquri" -}}
+{{- if .Values.rabbitmq.enabled -}}
 {{- $username := default "guest" .Values.rabbitmq.auth.username -}}
 {{- $password := default "guest" .Values.rabbitmq.auth.password -}}
 {{- $server := printf "%s-rabbitmq" (include "clowder.fullname" .) -}}
 {{- printf "amqp://%s:%s@%s/%s" $username $password $server "%2F" -}}
+{{- else -}}
+{{- required "Need to provide a uri for RabbitMQ" .Values.rabbitmq.uri -}}
+{{- end -}}
 {{- end -}}

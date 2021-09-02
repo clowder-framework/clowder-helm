@@ -22,7 +22,7 @@ To access for outside the cluster, perform the following steps:
 
 To Access the Clowder interface:
     {{- range .Values.ingress.hosts }}
-    http{{- if $.Values.ingress.ssl }}s{{end}}://{{ . }}
+    http{{- if $.Values.ingress.ssl }}s{{end}}://{{ . }}{{ $.Values.ingress.path }}
     {{- end }}
 
 {{- else if contains "NodePort" .Values.service.type }}
