@@ -43,12 +43,12 @@ registerThroughAdmins: true
 ## firstname : First name of the user
 ## lastname  : Last name of the user
 ## admin     : should user be given admin privileges
-users:
-  - email: admin@example.com
-    #password: secret
-    firstname: Admin
-    lastname: User
-    admin: true
+users: []
+  # - email: admin@example.com
+  #   #password: secret
+  #   firstname: Admin
+  #   lastname: User
+  #   admin: true
 
 ## idleTimeoutInMinutes the time in minutes that your session is valid for until clowder
 ## logs you out.

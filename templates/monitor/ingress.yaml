@@ -24,7 +24,9 @@ spec:
         {{- range .Values.ingress.hosts }}
         - {{ . | quote }}
       {{- end }}
-      secretName: {{ .Values.ingress.secretName | default (printf "%s-tls" (include "clowder.fullname" .)) }}
+      {{- if .Values.ingress.secretName }}
+      secretName: {{ .Values.ingress.secretName }}
+      {{- end }}
   {{- end }}
   rules:
 {{- if .Values.ingress.hosts }}
