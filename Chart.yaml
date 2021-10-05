@@ -13,12 +13,12 @@ description: >
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.13.1
+version: 0.14.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 1.18.1
+appVersion: 1.19.0
 
 # List of people that maintain this helm chart.
 maintainers:
@@ -55,6 +55,4 @@ annotations:
     - name: Helm Chart
       url: https://github.com/clowder-framework/clowder-helm
   artifacthub.io/changes: |
-    - default for users is now empty list
-    - no recursive chown of data folder
-    - only set secretname for TLS if explicitly provided
+    - Update clowder to version [1.19.0](https://github.com/clowder-framework/clowder/releases/tag/v1.19.0)

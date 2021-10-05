@@ -110,6 +110,9 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 
 ## ChangeLog
 
+### 0.14.0
+- Update clowder to version [1.19.0](https://github.com/clowder-framework/clowder/releases/tag/v1.19.0)
+
 ### 0.13.1
 - default for users is now empty list
 - no recursive chown of data folder
