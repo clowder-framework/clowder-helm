@@ -34,7 +34,7 @@ spec:
                   key: mongodb-uri
 {{- if not (or .Values.storage.s3 .Values.minio.enabled) }}
         - name: data-chown
-          command: [chown, "10001:root", /home/clowder/data]
+          command: [chown, "{{ .Values.userid }}:{{ .Values.groupid }}", /home/clowder/data]
           image: busybox:latest
           volumeMounts:
           - name: data
@@ -70,6 +70,9 @@ spec:
               value: {{ .admin | quote }}
 {{- end }}
 {{- end }}
+      securityContext:
+        runAsUser: {{ .Values.userid }}
+        runAsGroup: {{ .Values.groupid }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
