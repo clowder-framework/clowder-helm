@@ -36,6 +36,9 @@ spec:
         - name: data-chown
           command: [chown, "{{ .Values.userid }}:{{ .Values.groupid }}", /home/clowder/data]
           image: busybox:latest
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
           volumeMounts:
           - name: data
             mountPath: /home/clowder/data
