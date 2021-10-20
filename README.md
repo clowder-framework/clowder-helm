@@ -110,6 +110,9 @@ $ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
 
 ## ChangeLog
 
+### 0.14.2
+- Update clowder to version [1.19.1](https://github.com/clowder-framework/clowder/releases/tag/v1.19.1)
+
 ### 0.14.1
 - Allow to specify userid/groupid for clowder pods
 

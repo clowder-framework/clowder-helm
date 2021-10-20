@@ -72,6 +72,14 @@ extraConfig:
 #  - enablePublic = true
 #  - verifySpaces = false
 
+## userid is the userid for clowder, change this if you need a specific userid to write
+## to a shared folder.
+userid: 10001
+
+## groupid is the groupid for clowder, change this if you need a specific groupid to write
+## to a shared folder.
+groupid: 0
+
 
 # ----------------------------------------------------------------------
 # Configure the ingress object to hook into existing infastructure
