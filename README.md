@@ -92,6 +92,24 @@ helm install my-release ncsa/clowder -f values.yaml
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
 
+## Users
+
+To be able to work with clowder you will need an account on the server. Clowder will not ship with any accounts and will
+require users to be approved by an admin. The list of initial admins is set using `initialAdmins`. Any user that creates
+an account with an email specified in this list will automatically be approved.
+
+## Emails
+
+Clowder will use emails when users sign up. To enable emails you need to configure the email server. To setup emails use
+
+```yaml
+smtp:
+  mock: false
+  host: smtp.example.com
+```
+
+If this is not set, the clowder server will use a mock and print the emails in the clowder logs.
+
 ## Helpmenu
 
 You can add additional entries to the help menu, each entry in the list needs to have a label and a URL, for example
