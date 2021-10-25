@@ -71,6 +71,13 @@ data:
     elasticsearchSettings.serverAddress={{ include "clowder.fullname" . }}-elasticsearch-discovery
     elasticsearchSettings.serverPort=9300
 {{- end }}
+    helpMenu = [
+{{- range .Values.helpmenu }}
+    {{- . | toJson | nindent 6 }}
+{{- end }}
+    ]
+    clowder.proxy {
+    }
 {{- range .Values.extraConfig }}
     {{ . }}
 {{- end }}

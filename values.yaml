@@ -21,6 +21,8 @@ memory: 2048
 
 ## List of admins for Clowder. These people will at every restart of clowder be given admin
 ## priveleges. Can also be used to recover system by giving existing user admin rights.
+## Make sure to provide at least one initialAdmin user, otherwise you will not be able
+## to login.
 initialAdmins:
 #  - admin@example.com
 
@@ -35,20 +37,6 @@ registerThroughAdmins: true
 ## Secret key used for cookies. This should be set the same for all clowder instances in
 ## a replicated setup. Best is for kubernetes to generate a random key.
 #secretKey:
-
-## List of initial users. These users will be added after clowder is installed. The
-## users will still need to accept the data policy.
-## email     : Email address, also used to login
-## password  : Initial password, if not set a random password is generated
-## firstname : First name of the user
-## lastname  : Last name of the user
-## admin     : should user be given admin privileges
-users: []
-  # - email: admin@example.com
-  #   #password: secret
-  #   firstname: Admin
-  #   lastname: User
-  #   admin: true
 
 ## idleTimeoutInMinutes the time in minutes that your session is valid for until clowder
 ## logs you out.
@@ -83,6 +71,12 @@ groupid: 0
 ## tempfolder is the place where clowder will safe the files when they are uploaded. Best
 ## is for this to be on the same volume as the final storage, or on a fast storage.
 tempfolder: /home/clowder/data/tmp/
+
+## helpmenu is a list of entries that are added to the help menu in clowder, each entry has
+## two fields, label (shown in menu) and the url.
+helpmenu: []
+# - label: "FAQs"
+#   url: "https://example.com/faqs"
 
 # ----------------------------------------------------------------------
 # Configure the ingress object to hook into existing infastructure

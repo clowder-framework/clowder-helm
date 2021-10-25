@@ -42,7 +42,7 @@ spec:
           args:
             - -c
             - >-
-              mkdir {{ .Values.tempfolder }} &&
+              mkdir -p {{ .Values.tempfolder }} &&
               chown "{{ .Values.userid }}:{{ .Values.groupid }}" /home/clowder/data {{ .Values.tempfolder }}
           securityContext:
             runAsUser: 0
@@ -53,36 +53,6 @@ spec:
           {{- with .Values.extraVolumeMounts }}
           {{- . | toYaml | nindent 10 }}
           {{- end }}
-{{- end }}
-{{- if .Values.users }}
-{{- range $index, $element := .Values.users }}
-        - name: mongo-add-user-{{ $index }}
-          image: "{{ $.Values.image.repository }}/mongo-init:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
-          imagePullPolicy: {{ $.Values.image.pullPolicy }}
-          env:
-            - name: MONGO_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ $.Release.Name }}
-                  key: mongodb-uri
-{{- if .username }}
-            - name: USERNAME
-              value: {{ .username | quote }}
-{{- end }}
-            - name: PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ $.Release.Name }}
-                  key: "password-{{ $index }}"
-            - name: EMAIL_ADDRESS
-              value: {{ .email | quote }}
-            - name: FIRST_NAME
-              value: {{ .firstname | quote }}
-            - name: LAST_NAME
-              value: {{ .lastname | quote }}
-            - name: ADMIN
-              value: {{ .admin | quote }}
-{{- end }}
 {{- end }}
       containers:
         - name: {{ .Chart.Name }}

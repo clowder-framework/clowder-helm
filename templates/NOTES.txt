@@ -1,18 +1,6 @@
 {{- $fullname := include "clowder.fullname" . }}
 ** Please be patient while the chart is being deployed **
 
-{{- if .Values.users }}
-Credentials:
-  {{- range $index, $element := .Values.users }}
-{{- if .username }}
-    Username      : {{ .username }}
-{{- else }}
-    Username      : {{ .email }}
-{{- end }}
-  echo "Password      : $(kubectl get secret --namespace {{ $.Release.Namespace }} {{  $fullname }} -o jsonpath="{.data.password-{{ $index }}}" | base64 --decode)"
-  {{- end }}
-{{- end }}
-
 Clowder Admin Key:
     echo "Clowder Key   : $(kubectl get secret --namespace {{ .Release.Namespace }} {{ $fullname }} -o jsonpath="{.data.clowder-key}" | base64 --decode)"
 
