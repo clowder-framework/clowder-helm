@@ -22,6 +22,9 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      securityContext:
+        runAsUser: {{ .Values.userid }}
+        runAsGroup: {{ .Values.groupid }}
       initContainers:
         - name: check-mongo
           image: "{{ $.Values.image.checks }}"
@@ -33,15 +36,23 @@ spec:
                   name: {{ .Release.Name }}
                   key: mongodb-uri
 {{- if not (or .Values.storage.s3 .Values.minio.enabled) }}
-        - name: data-chown
-          command: [chown, "{{ .Values.userid }}:{{ .Values.groupid }}", /home/clowder/data]
+        - name: chown-data-folder
           image: busybox:latest
+          command: ["/bin/sh"]
+          args:
+            - -c
+            - >-
+              mkdir {{ .Values.tempfolder }} &&
+              chown "{{ .Values.userid }}:{{ .Values.groupid }}" /home/clowder/data {{ .Values.tempfolder }}
           securityContext:
             runAsUser: 0
             runAsGroup: 0
           volumeMounts:
           - name: data
             mountPath: /home/clowder/data
+          {{- with .Values.extraVolumeMounts }}
+          {{- . | toYaml | nindent 10 }}
+          {{- end }}
 {{- end }}
 {{- if .Values.users }}
 {{- range $index, $element := .Values.users }}
@@ -73,9 +84,6 @@ spec:
               value: {{ .admin | quote }}
 {{- end }}
 {{- end }}
-      securityContext:
-        runAsUser: {{ .Values.userid }}
-        runAsGroup: {{ .Values.groupid }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -83,6 +91,7 @@ spec:
           command:
             - /home/clowder/clowder.sh
             - -mem {{ .Values.memory }}
+            - -Djava.io.tmpdir={{ .Values.tempfolder }}
 {{- range .Values.extraOptions }}
             - {{ . }}
 {{- end }}
@@ -141,6 +150,9 @@ spec:
             - name: data
               mountPath: /home/clowder/data
 {{- end }}
+            {{- with .Values.extraVolumeMounts }}
+            {{- . | toYaml | nindent 12 }}
+            {{- end }}
           livenessProbe:
             tcpSocket:
               port: clowder
@@ -162,15 +174,18 @@ spec:
                 path: custom.conf
               - key: play.plugins
                 path: play.plugins
-{{- if not (or .Values.storage.s3 .Values.minio.enabled) }}
+        {{- if not (or .Values.storage.s3 .Values.minio.enabled) }}
         - name: data
           persistentVolumeClaim:
-{{- if $.Values.persistence.existingClaim }}
+            {{- if $.Values.persistence.existingClaim }}
             claimName: {{ $.Values.persistence.existingClaim }}
-{{- else }}
+            {{- else }}
             claimName: {{ include "clowder.fullname" . }}-data
-{{- end }}
-{{- end }}
+            {{- end }}
+        {{- end }}
+        {{- with .Values.extraVolumes }}
+          {{- . | toYaml | nindent 8 }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

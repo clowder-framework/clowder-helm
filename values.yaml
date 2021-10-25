@@ -80,6 +80,9 @@ userid: 10001
 ## to a shared folder.
 groupid: 0
 
+## tempfolder is the place where clowder will safe the files when they are uploaded. Best
+## is for this to be on the same volume as the final storage, or on a fast storage.
+tempfolder: /home/clowder/data/tmp/
 
 # ----------------------------------------------------------------------
 # Configure the ingress object to hook into existing infastructure
@@ -216,6 +219,15 @@ persistence:
   ## Annotations
   annotations: {}
 
+# Add additional volumes and mounts, for example to hold data transfered externally of clowder
+extraVolumes: []
+  # - name: sites
+  #   persistentVolumeClaim:
+  #     claimName: clowder-sites
+extraVolumeMounts: []
+  # - name: sites
+  #   mountPath: /home/clowder/sites
+  #   readOnly: true
 
 # ----------------------------------------------------------------------
 monitor:
