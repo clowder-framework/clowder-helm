@@ -167,6 +167,9 @@ extraConfig:
 
 ## ChangeLog
 
+### 0.14.6
+- don't set traefik ingress annotionion, it breaks TLS
+
 ### 0.14.5
 - Update clowder to version [1.19.4](https://github.com/clowder-framework/clowder/releases/tag/v1.19.4)
 

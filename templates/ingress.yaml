@@ -10,7 +10,6 @@ metadata:
   annotations:
   {{- if .Values.ingress.tls }}
     kubernetes.io/tls-acme: "true"
-    traefik.ingress.kubernetes.io/router.tls: "true"
   {{- end }}
   {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
