@@ -167,6 +167,9 @@ extraConfig:
 
 ## ChangeLog
 
+### 0.14.5
+- Update clowder to version [1.19.4](https://github.com/clowder-framework/clowder/releases/tag/v1.19.4)
+
 ### 0.14.4
 - allow for mounting of extra volumes in clowder
 - use tempfolder for clowder (/home/clowder/data/tmp)
