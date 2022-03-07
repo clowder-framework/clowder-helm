@@ -16,13 +16,13 @@ done
 
 # ZIP EXTRACTORS
 for x in extract2folder inventory; do
-  URL="https://raw.githubusercontent.com/clowder-framework/extractors-zip/master/${x}/extractor_info.json"
+  URL="https://raw.githubusercontent.com/clowder-framework/extractors-zip/main/${x}/extractor_info.json"
   VERSION=$(curl -s ${URL} | awk '/"version":/ { print $2}' | sed 's/[",]//g')
   sed -i~ "s/extractors-$x:.*/extractors-$x:${VERSION}/" values.yaml
 done
 
 # ANTI-VIRUS EXTRACTORS
-VERSION=$(curl -s https://raw.githubusercontent.com/clowder-framework/extractors-clamav/master/extractor_info.json | awk '/"version":/ { print $2}' | sed 's/[",]//g')
+VERSION=$(curl -s https://raw.githubusercontent.com/clowder-framework/extractors-clamav/main/extractor_info.json | awk '/"version":/ { print $2}' | sed 's/[",]//g')
 sed -i~ "s/extractors-clamav:.*/extractors-clamav:${VERSION}/" values.yaml
 
 # GEOSPATIAL EXTRACTORS

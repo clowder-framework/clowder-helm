@@ -167,6 +167,10 @@ extraConfig:
 
 ## ChangeLog
 
+### 0.15.0
+- Update clowder to version [1.20.0](https://github.com/clowder-framework/clowder/releases/tag/v1.20.0)
+- Update extractors for pyclowder version [2.5.1](https://github.com/clowder-framework/pyclowder/releases/tag/2.5.1)
+
 ### 0.14.6
 - don't set traefik ingress annotionion, it breaks TLS
 

@@ -144,7 +144,7 @@ extractors:
   video-preview:
     image: clowder/extractors-video-preview:2.2.1
   clamav:
-    image: clowder/extractors-clamav:1.0.6
+    image: clowder/extractors-clamav:1.0.3
 
 # ----------------------------------------------------------------------
 # DATA STORAGE
@@ -234,6 +234,19 @@ monitor:
     ## Optional static port assignment for service type NodePort.
     # nodePort: 30000
     port: 9999
+
+# ----------------------------------------------------------------------
+swagger:
+  enabled: false
+  tag: v3.52.5
+  path: /swagger/
+  service:
+    ## ServiceType
+    ## ref: https://kubernetes.io/docs/user-guide/services/#publishing-services---service-types
+    type: ClusterIP
+    ## Optional static port assignment for service type NodePort.
+    # nodePort: 30000
+    port: 80
 
 # ----------------------------------------------------------------------
 # clowder requires mongodb to be able to run
