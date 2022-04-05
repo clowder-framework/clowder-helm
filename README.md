@@ -58,7 +58,7 @@ A list of values frequently changed.
 | registerThroughAdmins | Should the admin be required to approve all new users. Setting this to false will result in all new users immediately be given access to Clowder. | true
 | idleTimeoutInMinutes | Number of minutes you stay logged into clowder without any interactions. | 30
 | tempfolder | Folder used to save files by clowder, before being send to storage location. | /home/clowder/data/tmp
-| helpmenu | List of additional menu entries to be added to the clowder help menu. | [] 
+| helpmenu | List of additional menu entries to be added to the clowder help menu. | []
 | userid | the id of the user that runs the clowder process, this is helpful if you want to write to a shared storage as a specific user. | 10001
 | groupid | the id of the groups that runs the clowder process, this is helpful if you want to write to a shared storage as a specific group. | 0
 | replicaCount | Number of instances to run of clowder. | 1
@@ -79,7 +79,7 @@ These options can be used to set any other clowder variables, or plugins.
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```bash
-helm install my-release ncsa/clowder --set clowderkey=ncsa 
+helm install my-release ncsa/clowder --set clowderkey=ncsa
 ```
 
 The above command sets the clowder admin key `ncsa`.
@@ -166,6 +166,9 @@ extraConfig:
 ```
 
 ## ChangeLog
+
+### 0.15.1
+- Update clowder to version [1.20.1](https://github.com/clowder-framework/clowder/releases/tag/v1.20.1)
 
 ### 0.15.0
 - Update clowder to version [1.20.0](https://github.com/clowder-framework/clowder/releases/tag/v1.20.0)
