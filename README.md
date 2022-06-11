@@ -167,6 +167,10 @@ extraConfig:
 
 ## ChangeLog
 
+### 0.15.2
+- update clowder to [1.20.3](https://github.com/clowder-framework/clowder/releases/tag/v1.20.3)
+- update image previewer to 2.4.0
+
 ### 0.15.1
 - Update clowder to version [1.20.1](https://github.com/clowder-framework/clowder/releases/tag/v1.20.1)
 
