@@ -34,15 +34,15 @@ sources:
 dependencies:
   - name: mongodb
     version: ~7.2
-    repository: https://charts.bitnami.com/bitnami
+    repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
     condition: mongodb.enabled
   - name: minio
     version: ~3.4
-    repository: https://charts.bitnami.com/bitnami
+    repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
     condition: minio.enabled
   - name: rabbitmq
     version: ~7.6
-    repository: https://charts.bitnami.com/bitnami
+    repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
     condition: rabbitmq.enabled
   - name: elasticsearch2
     alias: elasticsearch
