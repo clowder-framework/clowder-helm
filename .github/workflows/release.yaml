@@ -32,11 +32,11 @@ jobs:
           echo "::set-output name=changelog::$changelog"
 
       - name: Publish to NCSA OpenSource
-        uses: bsord/helm-push@v3
+        uses: bsord/helm-push@v4.1.0
         with:
           username: ${{ secrets.HELM_USERNAME }}
           password: ${{ secrets.HELM_PASSWORD }}
-          repository-url: "https://opensource.ncsa.illinois.edu/charts"
+          registry-url: "https://opensource.ncsa.illinois.edu/charts"
           chart-folder: "."
           force: true
 
