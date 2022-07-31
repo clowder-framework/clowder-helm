@@ -1,5 +1,5 @@
 {{- if .Values.extractors }}
-{{- $fullname := include "clowder.name" . }}
+{{- $fullname := include "clowder.fullname" . }}
 {{- $labels := include "clowder.labels" . }}
 {{- $rabbitmqURI := include "clowder.rabbitmquri" . }}
 {{- range $key, $val := .Values.extractors }}

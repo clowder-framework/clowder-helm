@@ -167,7 +167,10 @@ extraConfig:
 
 ## ChangeLog
 
-### 0.15.2
+### 0.15.4
+- fix name of extractors to be fullname
+
+### 0.15.3
 - fix deployment when using release name and secrets
 
 ### 0.15.2
