@@ -36,7 +36,7 @@ spec:
             - name: RABBITMQ_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "clowder.fullname" . }}
+                  name: {{ $fullname }}
                   key: rabbitmq-uri
       containers:
         - name: extractor
@@ -46,24 +46,24 @@ spec:
             - name: RABBITMQ_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "clowder.fullname" . }}
+                  name: {{ $fullname }}
                   key: rabbitmq-uri
 {{- if .env }}
             {{- toYaml .env | nindent 12 }}
 {{- end }}
-{{- if $.Values.resources }}
+{{- if .resources }}
           resources:
-            {{- toYaml $.Values.resources | nindent 12 }}
+            {{- toYaml .resources | nindent 12 }}
 {{- end }}
-      {{- with $.Values.nodeSelector }}
+      {{- with .nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-    {{- with $.Values.affinity }}
+    {{- with .affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-    {{- with $.Values.tolerations }}
+    {{- with .tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
