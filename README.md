@@ -167,6 +167,9 @@ extraConfig:
 
 ## ChangeLog
 
+### 0.15.5
+- fix rabbitmq/mongodb url
+
 ### 0.15.4
 - fix name of extractors to be fullname
 

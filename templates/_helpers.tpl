@@ -48,7 +48,12 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Mongo URI
 */}}
 {{- define "clowder.mongodburi" -}}
-mongodb://{{ include "clowder.fullname" . }}-mongodb:27017/clowder
+{{- if .Values.mongodb.enabled -}}
+{{- $server := printf "%s-mongodb" .Release.Name -}}
+{{- printf "mongodb://%s:27017/clowder" $server -}}
+{{- else -}}
+{{- required "Need to provide a uri for MongoDB" .Values.mongodb.uri -}}
+{{- end -}}
 {{- end -}}
 
 {{/*
@@ -58,7 +63,7 @@ RabbitMQ URI
 {{- if .Values.rabbitmq.enabled -}}
 {{- $username := default "guest" .Values.rabbitmq.auth.username -}}
 {{- $password := default "guest" .Values.rabbitmq.auth.password -}}
-{{- $server := printf "%s-rabbitmq" (include "clowder.fullname" .) -}}
+{{- $server := printf "%s-rabbitmq" .Release.Name -}}
 {{- printf "amqp://%s:%s@%s/%s" $username $password $server "%2F" -}}
 {{- else -}}
 {{- required "Need to provide a uri for RabbitMQ" .Values.rabbitmq.uri -}}

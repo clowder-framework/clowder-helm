@@ -32,7 +32,7 @@ spec:
                   name: {{ include "clowder.fullname" . }}
                   key: rabbitmq-uri
       containers:
-        - name: {{ .Chart.Name }}
+        - name: monitor
           image: "{{ .Values.image.repository }}/monitor:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
