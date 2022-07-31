@@ -33,7 +33,7 @@ spec:
             - name: MONGO_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: mongodb-uri
 {{- if not (or .Values.storage.s3 .Values.minio.enabled) }}
         - name: chown-data-folder
@@ -73,23 +73,23 @@ spec:
             - name: CLOWDER_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: clowder-key
             - name: CLOWDER_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: clowder-secret
 {{- if .Values.storage.s3 }}
             - name: S3_ACCESSKEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: s3-access-key
             - name: S3_SECRETKEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: s3-secret-key
 {{- else if .Values.minio.enabled }}
             - name: S3_ACCESSKEY
@@ -106,12 +106,12 @@ spec:
             - name: RABBITMQ_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: rabbitmq-uri
             - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: mongodb-uri
           volumeMounts:
             - name: custom-volume

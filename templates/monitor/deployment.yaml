@@ -29,7 +29,7 @@ spec:
             - name: RABBITMQ_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: rabbitmq-uri
       containers:
         - name: {{ .Chart.Name }}
@@ -43,12 +43,12 @@ spec:
             - name: RABBITMQ_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: rabbitmq-uri
             - name: CLOWDER_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}
+                  name: {{ include "clowder.fullname" . }}
                   key: clowder-secret
           livenessProbe:
             tcpSocket:

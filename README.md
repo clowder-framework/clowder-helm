@@ -168,6 +168,9 @@ extraConfig:
 ## ChangeLog
 
 ### 0.15.2
+- fix deployment when using release name and secrets
+
+### 0.15.2
 - update clowder to [1.20.3](https://github.com/clowder-framework/clowder/releases/tag/v1.20.3)
 - update image previewer to 2.4.0
 
