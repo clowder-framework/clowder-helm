@@ -3,7 +3,7 @@
 {{- $labels := include "clowder.labels" . }}
 {{- $rabbitmqURI := include "clowder.rabbitmquri" . }}
 {{- range $key, $val := .Values.extractors }}
-{{- if (default true .enabled) }}
+{{- if or .enabled (not (hasKey . "enabled")) }}
 ---
 apiVersion: apps/v1
 kind: Deployment

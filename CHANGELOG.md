@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.16.1
+- fix for when `enable: false` for extractors
+
 ### 0.16.0
 - update clowder to [1.21.0](https://github.com/clowder-framework/clowder/releases/tag/v1.21.0)
 - update all extractors to incorperate pyclowder 2.6.0
