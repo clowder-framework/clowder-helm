@@ -117,7 +117,7 @@ to add a FAQ:
 
 ```yaml
 helpmenu:
-  - lalel: FAQ
+  - label: FAQ
     url: https://example.com/faq
 ```
 
