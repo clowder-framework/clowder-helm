@@ -126,25 +126,26 @@ smtp:
 ## env          : additional environment variables to pass to extractor.
 extractors:
   file-digest:
-    image: clowder/extractors-digest:2.2.2
-    #enabled: true
-    #replicaCount: 1
-    #pullPolicy: Always
+    image: clowder/extractors-digest:2.2.3
+    # enabled: true
+    # replicaCount: 1
+    # pullPolicy: Always
+    # imagePullSecrets: regcred
     # env:
     #   - name: extractor.bump.sh
     #     value: "bar"
   image-preview:
-    image: clowder/extractors-image-preview:2.4.1
+    image: clowder/extractors-image-preview:2.4.2
   image-metadata:
-    image: clowder/extractors-image-metadata:2.1.8
+    image: clowder/extractors-image-metadata:2.1.9
   audio-preview:
-    image: clowder/extractors-audio-preview:2.1.8
+    image: clowder/extractors-audio-preview:2.1.9
   pdf-preview:
-    image: clowder/extractors-pdf-preview:2.1.8
+    image: clowder/extractors-pdf-preview:2.1.9
   video-preview:
-    image: clowder/extractors-video-preview:2.2.2
+    image: clowder/extractors-video-preview:2.2.3
   clamav:
-    image: clowder/extractors-clamav:1.0.7
+    image: clowder/extractors-clamav:1.0.9
 
 # ----------------------------------------------------------------------
 # DATA STORAGE
