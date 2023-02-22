@@ -1,162 +1,773 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
+## 0.16.2 
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+**Release date:** 2023-02-21
 
-### 0.16.1
-- fix for when `enable: false` for extractors
+![AppVersion: 1.21.0](https://img.shields.io/static/v1?label=AppVersion&message=1.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
-### 0.16.0
-- update clowder to [1.21.0](https://github.com/clowder-framework/clowder/releases/tag/v1.21.0)
-- update all extractors to incorperate pyclowder 2.6.0
 
-### 0.15.5
-- fix rabbitmq/mongodb url
+* update extractor version 
 
-### 0.15.4
-- fix name of extractors to be fullname
+### Default value changes
 
-### 0.15.3
-- fix deployment when using release name and secrets
+```diff
+diff --git a/values.yaml b/values.yaml
+index 6dc2ae1..fb0323f 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -126,25 +126,26 @@ smtp:
+ ## env          : additional environment variables to pass to extractor.
+ extractors:
+   file-digest:
+-    image: clowder/extractors-digest:2.2.2
+-    #enabled: true
+-    #replicaCount: 1
+-    #pullPolicy: Always
++    image: clowder/extractors-digest:2.2.3
++    # enabled: true
++    # replicaCount: 1
++    # pullPolicy: Always
++    # imagePullSecrets: regcred
+     # env:
+     #   - name: extractor.bump.sh
+     #     value: "bar"
+   image-preview:
+-    image: clowder/extractors-image-preview:2.4.1
++    image: clowder/extractors-image-preview:2.4.2
+   image-metadata:
+-    image: clowder/extractors-image-metadata:2.1.8
++    image: clowder/extractors-image-metadata:2.1.9
+   audio-preview:
+-    image: clowder/extractors-audio-preview:2.1.8
++    image: clowder/extractors-audio-preview:2.1.9
+   pdf-preview:
+-    image: clowder/extractors-pdf-preview:2.1.8
++    image: clowder/extractors-pdf-preview:2.1.9
+   video-preview:
+-    image: clowder/extractors-video-preview:2.2.2
++    image: clowder/extractors-video-preview:2.2.3
+   clamav:
+-    image: clowder/extractors-clamav:1.0.7
++    image: clowder/extractors-clamav:1.0.9
+ 
+ # ----------------------------------------------------------------------
+ # DATA STORAGE
+```
 
-### 0.15.2
-- update clowder to [1.20.3](https://github.com/clowder-framework/clowder/releases/tag/v1.20.3)
-- update image previewer to 2.4.0
+## 0.16.1 
 
-### 0.15.1
-- Update clowder to version [1.20.1](https://github.com/clowder-framework/clowder/releases/tag/v1.20.1)
+**Release date:** 2022-09-12
 
-### 0.15.0
-- Update clowder to version [1.20.0](https://github.com/clowder-framework/clowder/releases/tag/v1.20.0)
-- Update extractors for pyclowder version [2.5.1](https://github.com/clowder-framework/pyclowder/releases/tag/2.5.1)
+![AppVersion: 1.21.0](https://img.shields.io/static/v1?label=AppVersion&message=1.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
-### 0.14.6
-- don't set traefik ingress annotionion, it breaks TLS
 
-### 0.14.5
-- Update clowder to version [1.19.4](https://github.com/clowder-framework/clowder/releases/tag/v1.19.4)
+* fix ability to disable extractor 
 
-### 0.14.4
-- allow for mounting of extra volumes in clowder
-- use tempfolder for clowder (/home/clowder/data/tmp)
-- use helpmenu to add additional entries to the botttom of the help menu.
-- remove users option, use initialadmins instead
+### Default value changes
 
-### 0.14.3
-- Update clowder to version [1.19.2](https://github.com/clowder-framework/clowder/releases/tag/v1.19.2)
+```diff
+# No changes in this release
+```
 
-### 0.14.2
-- Update clowder to version [1.19.1](https://github.com/clowder-framework/clowder/releases/tag/v1.19.1)
+## 0.16.0 
 
-### 0.14.1
-- Allow to specify userid/groupid for clowder pods
+**Release date:** 2022-09-09
 
-### 0.14.0
-- Update clowder to version [1.19.0](https://github.com/clowder-framework/clowder/releases/tag/v1.19.0)
+![AppVersion: 1.21.0](https://img.shields.io/static/v1?label=AppVersion&message=1.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
-### 0.13.1
-- default for users is now empty list
-- no recursive chown of data folder
-- only set secretname for TLS if explicitly provided
 
-### 0.13.0
-- Update clowder to version [1.18.1](https://github.com/clowder-framework/clowder/releases/tag/v1.18.1)
-- Also see updates for version [1.18.0](https://github.com/clowder-framework/clowder/releases/tag/v1.18.0)
-- fix TLS for nginx and traefik v2.
+* clowder/extractor updates 
 
-### 0.12.0
-- Update clowder to version [1.17.0](https://github.com/clowder-framework/clowder/releases/tag/v1.17.0)
+### Default value changes
 
-### 0.11.1
-- Fixed problem with storageClassName in persistence
+```diff
+diff --git a/values.yaml b/values.yaml
+index 60990e5..6dc2ae1 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -126,7 +126,7 @@ smtp:
+ ## env          : additional environment variables to pass to extractor.
+ extractors:
+   file-digest:
+-    image: clowder/extractors-digest:2.2.1
++    image: clowder/extractors-digest:2.2.2
+     #enabled: true
+     #replicaCount: 1
+     #pullPolicy: Always
+@@ -134,17 +134,17 @@ extractors:
+     #   - name: extractor.bump.sh
+     #     value: "bar"
+   image-preview:
+-    image: clowder/extractors-image-preview:2.4.0
++    image: clowder/extractors-image-preview:2.4.1
+   image-metadata:
+-    image: clowder/extractors-image-metadata:2.1.7
++    image: clowder/extractors-image-metadata:2.1.8
+   audio-preview:
+-    image: clowder/extractors-audio-preview:2.1.7
++    image: clowder/extractors-audio-preview:2.1.8
+   pdf-preview:
+-    image: clowder/extractors-pdf-preview:2.1.7
++    image: clowder/extractors-pdf-preview:2.1.8
+   video-preview:
+-    image: clowder/extractors-video-preview:2.2.1
++    image: clowder/extractors-video-preview:2.2.2
+   clamav:
+-    image: clowder/extractors-clamav:1.0.6
++    image: clowder/extractors-clamav:1.0.7
+ 
+ # ----------------------------------------------------------------------
+ # DATA STORAGE
+```
 
-### 0.11.0
-- Update clowder to 0.16.0
-  - Archiving updates
-  - Sorting in search api
-- Disable rabbitmq plugin
+## 0.15.5 
 
-### 0.10.1
-- Update clowder to 0.15.1
-  - Several views were throwing errors trying to access a None value in EventSinkService when a user was not logged in.
-  - Changed EventSinkService logging to debug to minimize chatter.
-  - Don't automatically create eventsink queue and bind it to eventsink exchange. Let clients do that so that we don't have a queue for the eventsink filling up if there are no consumers.
-- Update digest extractor to 2.2.0
+**Release date:** 2022-07-31
 
-### 0.10.0
-- Complete rewrite of the messagebus code
-- Added new previewers (Vega and FBX)
-- Can filter search by upload/creation dates
-- Disabled download if file is not processed yet
-- Fixed bug when creating spaces through the api.
-- Return headers when calling /api/me
-- Updated core extractor versions
+![AppVersion: 1.20.3](https://img.shields.io/static/v1?label=AppVersion&message=1.20.3&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
-### 0.9.1
-- Forgot to increate clowder version tag.
-- Now using appVersion for clowder version tag by default.
-- Using `networking.k8s.io/v1` for ingress rules
 
-### 0.9.0
-- update clowder to 1.14.1
-- helm chart now in https://github.com/clowder-framework/clowder-helm
+* fix mongo/rabbitmq 
 
-### 0.8.0
-- update clowder to 1.13.0
-- update extractors:
-  - extractors-digest to 2.1.6
+### Default value changes
 
-### 0.7.0
-- update clowder to 1.12.2
-- can set extra options for clowder `extraOptions`
-- can set the memory used by clowder using `memory` (default is 2GB)
-- update extractors:
-  - extractors-digest to 2.1.5
-  - extractors-image-preview to 2.1.5
-  - extractors-image-metadata to 2.1.5
-  - extractors-audio-preview to 2.1.5
-  - extractors-pdf-preview to 2.1.5
-  - extractors-video-preview to 2.1.5
+```diff
+# No changes in this release
+```
 
-### 0.6.2
-- update clowder to 1.11.2
-- can set replicas for monitor independent from clowder
-- update extractors:
-  - extractors-digest to 2.1.4
-  - extractors-image-preview to 2.1.4
-  - extractors-image-metadata to 2.1.4
-  - extractors-audio-preview to 2.1.4
-  - extractors-pdf-preview to 2.1.4
-  - extractors-video-preview to 2.1.4
-  - extractors-clamav to 1.0.3
+## 0.15.4 
 
-### 0.6.1
-- update clowder to 1.11.1
-- ability to set idle timeout (default is 30 min)
-- use new healthz endpoint in clowder for ready checks.
+**Release date:** 2022-07-31
 
-### 0.6.0
-- update clowder to 1.11.0
-- update RabbitMQ to 7.6.7
-- updated most core extractors to newer version
-- added virus checker extractor
-- added `extraConfig` and `extraPlugins` to allow finer control of clowder
-  - this can be used to add additional login options to clowder
-- monitor is now deployed at https://\<server\>/\<path\>/monitor/index.html
+![AppVersion: 1.20.3](https://img.shields.io/static/v1?label=AppVersion&message=1.20.3&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
-### 0.5.0
-- update clowder to 1.9.0
-- now uses helm3 syntax for chart
-- added minio for storage option
-- secrets are now passed as environment variables not in configmap
-- user creation moved to init container for clowder, will prevent helm chart from timing out.
 
-### 0.2.0
-- update clowder to 1.8.0
-- make sure to use image.tag for containers
+* fix name of extractors 
+* fix extractor secret 
+* fix helm push 
 
-### 0.0.1
-This is the first release of the helm chart
+### Default value changes
 
+```diff
+# No changes in this release
+```
+
+## 0.15.3 
+
+**Release date:** 2022-07-31
+
+![AppVersion: 1.20.3](https://img.shields.io/static/v1?label=AppVersion&message=1.20.3&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix secrets 
+* add old bitnami charts 
+* point to older bitnami charts 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.15.2 
+
+**Release date:** 2022-06-11
+
+![AppVersion: 1.20.3](https://img.shields.io/static/v1?label=AppVersion&message=1.20.3&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* update clowder to 1.20.3 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 400d429..60990e5 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -134,7 +134,7 @@ extractors:
+     #   - name: extractor.bump.sh
+     #     value: "bar"
+   image-preview:
+-    image: clowder/extractors-image-preview:2.2.2
++    image: clowder/extractors-image-preview:2.4.0
+   image-metadata:
+     image: clowder/extractors-image-metadata:2.1.7
+   audio-preview:
+```
+
+## 0.15.1 
+
+**Release date:** 2022-04-05
+
+![AppVersion: 1.20.1](https://img.shields.io/static/v1?label=AppVersion&message=1.20.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* clowder 1.20.1 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.15.0 
+
+**Release date:** 2022-03-06
+
+![AppVersion: 1.20.0](https://img.shields.io/static/v1?label=AppVersion&message=1.20.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* clowder/pyclowder release 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 4c1ba0f..400d429 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -126,7 +126,7 @@ smtp:
+ ## env          : additional environment variables to pass to extractor.
+ extractors:
+   file-digest:
+-    image: clowder/extractors-digest:2.2.0
++    image: clowder/extractors-digest:2.2.1
+     #enabled: true
+     #replicaCount: 1
+     #pullPolicy: Always
+@@ -134,17 +134,17 @@ extractors:
+     #   - name: extractor.bump.sh
+     #     value: "bar"
+   image-preview:
+-    image: clowder/extractors-image-preview:2.2.1
++    image: clowder/extractors-image-preview:2.2.2
+   image-metadata:
+-    image: clowder/extractors-image-metadata:2.1.6
++    image: clowder/extractors-image-metadata:2.1.7
+   audio-preview:
+-    image: clowder/extractors-audio-preview:2.1.6
++    image: clowder/extractors-audio-preview:2.1.7
+   pdf-preview:
+-    image: clowder/extractors-pdf-preview:2.1.6
++    image: clowder/extractors-pdf-preview:2.1.7
+   video-preview:
+-    image: clowder/extractors-video-preview:2.2.0
++    image: clowder/extractors-video-preview:2.2.1
+   clamav:
+-    image: clowder/extractors-clamav:1.0.3
++    image: clowder/extractors-clamav:1.0.6
+ 
+ # ----------------------------------------------------------------------
+ # DATA STORAGE
+@@ -235,8 +235,6 @@ monitor:
+     # nodePort: 30000
+     port: 9999
+ 
+-# ----------------------------------------------------------------------
+-
+ # ----------------------------------------------------------------------
+ # clowder requires mongodb to be able to run
+ #
+```
+
+## 0.14.6 
+
+**Release date:** 2021-12-13
+
+![AppVersion: 1.19.4](https://img.shields.io/static/v1?label=AppVersion&message=1.19.4&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* don't set ingress traefik annotion 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.14.5 
+
+**Release date:** 2021-12-13
+
+![AppVersion: 1.19.4](https://img.shields.io/static/v1?label=AppVersion&message=1.19.4&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* update to version 1.19.4 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.14.4 
+
+**Release date:** 2021-10-25
+
+![AppVersion: 1.19.2](https://img.shields.io/static/v1?label=AppVersion&message=1.19.2&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* add helpmenu, remove users 
+* Update README.md 
+* Update README.md 
+* add temp folder and extra volumes 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 1ed5587..4c1ba0f 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -21,6 +21,8 @@ memory: 2048
+ 
+ ## List of admins for Clowder. These people will at every restart of clowder be given admin
+ ## priveleges. Can also be used to recover system by giving existing user admin rights.
++## Make sure to provide at least one initialAdmin user, otherwise you will not be able
++## to login.
+ initialAdmins:
+ #  - admin@example.com
+ 
+@@ -36,20 +38,6 @@ registerThroughAdmins: true
+ ## a replicated setup. Best is for kubernetes to generate a random key.
+ #secretKey:
+ 
+-## List of initial users. These users will be added after clowder is installed. The
+-## users will still need to accept the data policy.
+-## email     : Email address, also used to login
+-## password  : Initial password, if not set a random password is generated
+-## firstname : First name of the user
+-## lastname  : Last name of the user
+-## admin     : should user be given admin privileges
+-users: []
+-  # - email: admin@example.com
+-  #   #password: secret
+-  #   firstname: Admin
+-  #   lastname: User
+-  #   admin: true
+-
+ ## idleTimeoutInMinutes the time in minutes that your session is valid for until clowder
+ ## logs you out.
+ idleTimeoutInMinutes: 30
+@@ -80,6 +68,15 @@ userid: 10001
+ ## to a shared folder.
+ groupid: 0
+ 
++## tempfolder is the place where clowder will safe the files when they are uploaded. Best
++## is for this to be on the same volume as the final storage, or on a fast storage.
++tempfolder: /home/clowder/data/tmp/
++
++## helpmenu is a list of entries that are added to the help menu in clowder, each entry has
++## two fields, label (shown in menu) and the url.
++helpmenu: []
++# - label: "FAQs"
++#   url: "https://example.com/faqs"
+ 
+ # ----------------------------------------------------------------------
+ # Configure the ingress object to hook into existing infastructure
+@@ -216,6 +213,15 @@ persistence:
+   ## Annotations
+   annotations: {}
+ 
++# Add additional volumes and mounts, for example to hold data transfered externally of clowder
++extraVolumes: []
++  # - name: sites
++  #   persistentVolumeClaim:
++  #     claimName: clowder-sites
++extraVolumeMounts: []
++  # - name: sites
++  #   mountPath: /home/clowder/sites
++  #   readOnly: true
+ 
+ # ----------------------------------------------------------------------
+ monitor:
+```
+
+## 0.14.3 
+
+**Release date:** 2021-10-20
+
+![AppVersion: 1.19.2](https://img.shields.io/static/v1?label=AppVersion&message=1.19.2&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* clowder 1.19.2 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.14.2 
+
+**Release date:** 2021-10-20
+
+![AppVersion: 1.19.1](https://img.shields.io/static/v1?label=AppVersion&message=1.19.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* clowder 1.19.1 release 
+* run chown as root 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 60ef4ec..1ed5587 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -72,6 +72,14 @@ extraConfig:
+ #  - enablePublic = true
+ #  - verifySpaces = false
+ 
++## userid is the userid for clowder, change this if you need a specific userid to write
++## to a shared folder.
++userid: 10001
++
++## groupid is the groupid for clowder, change this if you need a specific groupid to write
++## to a shared folder.
++groupid: 0
++
+ 
+ # ----------------------------------------------------------------------
+ # Configure the ingress object to hook into existing infastructure
+```
+
+## 0.14.1 
+
+**Release date:** 2021-10-06
+
+![AppVersion: 1.19.0](https://img.shields.io/static/v1?label=AppVersion&message=1.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* allow to specify userid 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.14.0 
+
+**Release date:** 2021-10-05
+
+![AppVersion: 1.19.0](https://img.shields.io/static/v1?label=AppVersion&message=1.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* clowder release 1.19.0 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.13.1 
+
+**Release date:** 2021-10-04
+
+![AppVersion: 1.18.1](https://img.shields.io/static/v1?label=AppVersion&message=1.18.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* version 0.13.1 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 8b763fa..60ef4ec 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -43,12 +43,12 @@ registerThroughAdmins: true
+ ## firstname : First name of the user
+ ## lastname  : Last name of the user
+ ## admin     : should user be given admin privileges
+-users:
+-  - email: admin@example.com
+-    #password: secret
+-    firstname: Admin
+-    lastname: User
+-    admin: true
++users: []
++  # - email: admin@example.com
++  #   #password: secret
++  #   firstname: Admin
++  #   lastname: User
++  #   admin: true
+ 
+ ## idleTimeoutInMinutes the time in minutes that your session is valid for until clowder
+ ## logs you out.
+```
+
+## 0.13.0 
+
+**Release date:** 2021-09-02
+
+![AppVersion: 1.18.1](https://img.shields.io/static/v1?label=AppVersion&message=1.18.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* release 0.13.0 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 2c9575e..8b763fa 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -79,12 +79,12 @@ extraConfig:
+ #
+ ingress:
+   enabled: false
+-  annotations: {}
+-  # kubernetes.io/ingress.class: "nginx"
++  tls: true
++  # annotations:
++  #   kubernetes.io/ingress.class: "nginx"
+   # hosts:
+   #   - clowder.localhost
+   path: /
+-  tls:
+   #  - secretName: chart-example-tls
+   #    hosts:
+   #      - chart-example.local
+@@ -126,7 +126,7 @@ extractors:
+     #replicaCount: 1
+     #pullPolicy: Always
+     # env:
+-    #   - name: foo
++    #   - name: extractor.bump.sh
+     #     value: "bar"
+   image-preview:
+     image: clowder/extractors-image-preview:2.2.1
+@@ -202,7 +202,7 @@ persistence:
+   ##
+   #storageClass: "-"
+ 
+-  ## sisze of the storage class
++  ## size of the storage class
+   size: 20Gi
+ 
+   ## Annotations
+```
+
+## 0.12.0 
+
+**Release date:** 2021-05-05
+
+![AppVersion: 1.17.0](https://img.shields.io/static/v1?label=AppVersion&message=1.17.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* update clowder to version 1.17.0 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.11.1 
+
+**Release date:** 2021-04-24
+
+![AppVersion: 1.16.0](https://img.shields.io/static/v1?label=AppVersion&message=1.16.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix persistence problem 
+* update changelog 
+* update README 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.11.0 
+
+**Release date:** 2021-04-01
+
+![AppVersion: 1.16.0](https://img.shields.io/static/v1?label=AppVersion&message=1.16.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* clowder 1.16.0, chart 1.11.0 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.10.1 
+
+**Release date:** 2021-03-24
+
+![AppVersion: 1.15.1](https://img.shields.io/static/v1?label=AppVersion&message=1.15.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* version 0.10.1 of chart, clowder 1.15.1 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 16685db..2c9575e 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -121,7 +121,7 @@ smtp:
+ ## env          : additional environment variables to pass to extractor.
+ extractors:
+   file-digest:
+-    image: clowder/extractors-digest:2.1.6
++    image: clowder/extractors-digest:2.2.0
+     #enabled: true
+     #replicaCount: 1
+     #pullPolicy: Always
+```
+
+## 0.10.0 
+
+**Release date:** 2021-03-04
+
+![AppVersion: 1.15.0](https://img.shields.io/static/v1?label=AppVersion&message=1.15.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* clowder version 1.15.0, chart version 0.10.0 
+* forgot to update README 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 9d91384..16685db 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -129,15 +129,15 @@ extractors:
+     #   - name: foo
+     #     value: "bar"
+   image-preview:
+-    image: clowder/extractors-image-preview:2.1.5
++    image: clowder/extractors-image-preview:2.2.1
+   image-metadata:
+-    image: clowder/extractors-image-metadata:2.1.5
++    image: clowder/extractors-image-metadata:2.1.6
+   audio-preview:
+-    image: clowder/extractors-audio-preview:2.1.5
++    image: clowder/extractors-audio-preview:2.1.6
+   pdf-preview:
+-    image: clowder/extractors-pdf-preview:2.1.5
++    image: clowder/extractors-pdf-preview:2.1.6
+   video-preview:
+-    image: clowder/extractors-video-preview:2.1.5
++    image: clowder/extractors-video-preview:2.2.0
+   clamav:
+     image: clowder/extractors-clamav:1.0.3
+ 
+```
+
+## 0.9.1 
+
+**Release date:** 2021-02-09
+
+![AppVersion: 1.14.1](https://img.shields.io/static/v1?label=AppVersion&message=1.14.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix problem with installed clowder version 
+* tweaks to the release pipeline 
+* use helm repo add 
+* fix release 
+* use main branch 
+* update documentation 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 1445333..9d91384 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -5,7 +5,7 @@
+ image:
+   repository: clowder
+   name: clowder
+-  tag: 1.13.0
++  tag: null
+   checks: "ncsa/checks:1.0.0"
+   pullPolicy: IfNotPresent
+ 
+```
+
+## 0.9.0 
+
+**Release date:** 2021-02-04
+
+![AppVersion: 1.14.1](https://img.shields.io/static/v1?label=AppVersion&message=1.14.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* bump clowder to version 1.14.1 
+* package helm chart 
+* fix ct.yaml 
+* add linter 
+* don't include elasticsearch2 chart 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.8.0 
+
+**Release date:** 2021-02-04
+
+![AppVersion: 1.13.0](https://img.shields.io/static/v1?label=AppVersion&message=1.13.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* create new clowder-helm repo 
+* fix path to charts 
+* auto build charts 
+* fix typo 
+* install betydb, add notes about secrets 
+* copy charts to opensource 
+* only ignore values-*.yaml in root 
+* ignore bitnami 
+* ignore charts folders, use helm dep up 
+* use generic values 
+* Initial Commit 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+---
+Autogenerated from Helm Chart and git history using [helm-changelog](https://github.com/mogensen/helm-changelog)
