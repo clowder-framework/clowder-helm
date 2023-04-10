@@ -1,5 +1,42 @@
 # Change Log
 
+## 0.16.6 
+
+**Release date:** 2023-04-10
+
+![AppVersion: 1.21.0](https://img.shields.io/static/v1?label=AppVersion&message=1.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* use data folder with S3 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 4b084c8..82f1c41 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -70,6 +70,8 @@ groupid: 0
+ 
+ ## tempfolder is the place where clowder will safe the files when they are uploaded. Best
+ ## is for this to be on the same volume as the final storage, or on a fast storage.
++## If persistence is not enabled, make sure this points to a folder  writeable by the
++## clowder pod.
+ tempfolder: /home/clowder/data/tmp/
+ 
+ ## helpmenu is a list of entries that are added to the help menu in clowder, each entry has
+@@ -188,6 +190,8 @@ minio:
+ ## Enable persistence using Persistent Volume Claims
+ ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+ ##
++## This is used for data and temp space. In case of S3 storage, this should
++## be at least as big as the biggest uploaded file.
+ persistence:
+   enabled: true
+   ## A manually managed Persistent Volume and Claim
+```
+
 ## 0.16.5 
 
 **Release date:** 2023-04-10

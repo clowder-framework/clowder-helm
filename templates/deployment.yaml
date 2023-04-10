@@ -35,6 +35,7 @@ spec:
                 secretKeyRef:
                   name: {{ include "clowder.fullname" . }}
                   key: mongodb-uri
+{{- if .Values.persistence.enabled }}
         - name: setup-data-folder
           image: busybox:latest
           command: ["/bin/sh"]
@@ -47,13 +48,12 @@ spec:
             runAsUser: 0
             runAsGroup: 0
           volumeMounts:
-{{- if not (or .Values.storage.s3 .Values.minio.enabled) }}
           - name: data
             mountPath: /home/clowder/data
-{{- end }}
           {{- with .Values.extraVolumeMounts }}
           {{- . | toYaml | nindent 10 }}
           {{- end }}
+{{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -116,7 +116,7 @@ spec:
           volumeMounts:
             - name: custom-volume
               mountPath: /home/clowder/custom
-{{- if not (or .Values.storage.s3 .Values.minio.enabled) }}
+{{- if .Values.persistence.enabled }}
             - name: data
               mountPath: /home/clowder/data
 {{- end }}
@@ -144,7 +144,7 @@ spec:
                 path: custom.conf
               - key: play.plugins
                 path: play.plugins
-        {{- if not (or .Values.storage.s3 .Values.minio.enabled) }}
+{{- if .Values.persistence.enabled }}
         - name: data
           persistentVolumeClaim:
             {{- if $.Values.persistence.existingClaim }}
@@ -152,7 +152,7 @@ spec:
             {{- else }}
             claimName: {{ include "clowder.fullname" . }}-data
             {{- end }}
-        {{- end }}
+{{- end }}
         {{- with .Values.extraVolumes }}
           {{- . | toYaml | nindent 8 }}
         {{- end }}

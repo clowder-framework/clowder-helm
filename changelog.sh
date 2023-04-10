@@ -7,3 +7,5 @@ changelog="$(sed -e "1,/^## ${version}/d" -e "/^###/,\$d" -e '/^$/d' -e 's/^* /-
 sed -i~ -e '/^  artifacthub.io\/changes: |/,$d' Chart.yaml
 echo "  artifacthub.io/changes: |" >> Chart.yaml
 echo "${changelog}" >> Chart.yaml
+
+git commit --amend Chart.yaml CHANGELOG.md

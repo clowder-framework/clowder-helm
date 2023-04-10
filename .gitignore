@@ -12,3 +12,6 @@ clowder-*.tgz
 secrets-*.yaml
 values-*.yaml
 *.values.yaml
+
+# backup files
+*~

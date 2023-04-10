@@ -70,6 +70,8 @@ groupid: 0
 
 ## tempfolder is the place where clowder will safe the files when they are uploaded. Best
 ## is for this to be on the same volume as the final storage, or on a fast storage.
+## If persistence is not enabled, make sure this points to a folder  writeable by the
+## clowder pod.
 tempfolder: /home/clowder/data/tmp/
 
 ## helpmenu is a list of entries that are added to the help menu in clowder, each entry has
@@ -188,6 +190,8 @@ minio:
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
+## This is used for data and temp space. In case of S3 storage, this should
+## be at least as big as the biggest uploaded file.
 persistence:
   enabled: true
   ## A manually managed Persistent Volume and Claim
