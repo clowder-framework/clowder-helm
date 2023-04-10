@@ -42,6 +42,7 @@ spec:
           args:
             - -c
             - >-
+              mkdir -p {{ .Values.tempfolder }} &&
               chown "{{ .Values.userid }}:{{ .Values.groupid }}" /home/clowder/data {{ .Values.tempfolder }}
           securityContext:
             runAsUser: 0
@@ -52,7 +53,7 @@ spec:
           {{- with .Values.extraVolumeMounts }}
           {{- . | toYaml | nindent 10 }}
           {{- end }}
-{{- end }}
+{{- else }}
         - name: create-tmp-folder
           image: busybox:latest
           command: ["/bin/sh"]
@@ -60,12 +61,11 @@ spec:
             - -c
             - >-
               mkdir -p {{ .Values.tempfolder }}
-          volumeMounts:
-          - name: data
-            mountPath: /home/clowder/data
           {{- with .Values.extraVolumeMounts }}
+          volumeMounts:
           {{- . | toYaml | nindent 10 }}
           {{- end }}
+{{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
