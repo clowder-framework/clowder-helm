@@ -167,4 +167,10 @@ extraConfig:
 
 ## ChangeLog
 
+This is auto generated using:
+
+```
+docker run -it --rm -v $(pwd):/data mogensen/helm-changelog:latest
+```
+
 See [CHANGELOG.md](CHANGELOG.md) for the changes.

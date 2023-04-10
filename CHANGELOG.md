@@ -1,5 +1,37 @@
 # Change Log
 
+## 0.16.3 
+
+**Release date:** 2023-04-10
+
+![AppVersion: 1.21.0](https://img.shields.io/static/v1?label=AppVersion&message=1.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* release 0.16.3 
+* make sure tmp folder exists (fixes #7) 
+* update digest extractor 
+* update changelog 
+* Merge branch 'main' of github.com:clowder-framework/clowder-helm 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index fb0323f..4b084c8 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -126,7 +126,7 @@ smtp:
+ ## env          : additional environment variables to pass to extractor.
+ extractors:
+   file-digest:
+-    image: clowder/extractors-digest:2.2.3
++    image: clowder/extractors-digest:2.2.4
+     # enabled: true
+     # replicaCount: 1
+     # pullPolicy: Always
+```
+
 ## 0.16.2 
 
 **Release date:** 2023-02-21
@@ -9,6 +41,7 @@
 
 
 * update extractor version 
+* Minor typo correction 
 
 ### Default value changes
 
