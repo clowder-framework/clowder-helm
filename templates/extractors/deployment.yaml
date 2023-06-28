@@ -42,7 +42,7 @@ spec:
         - name: extractor
           image: {{ .image | quote }}
           volumeMounts:
-            {{ - with .Values.extraVolumeMounts }}
+            {{ - with .extraVolumeMounts }}
             {{ - . | toYaml | nindent 12 }}
             {{ - end }}
           imagePullPolicy: {{ default $.Values.image.pullPolicy .pullPolicy }}
@@ -59,7 +59,7 @@ spec:
           resources:
             {{- toYaml .resources | nindent 12 }}
 {{- end }}
-      {{ - with .Values.extraVolumes }}
+      {{ - with .extraVolumes }}
       volumes:
         {{ - . | toYaml | nindent 8 }}
       {{ - end }}
