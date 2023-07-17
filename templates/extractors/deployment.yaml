@@ -42,9 +42,9 @@ spec:
         - name: extractor
           image: {{ .image | quote }}
           volumeMounts:
-            {{ - with .extraVolumeMounts }}
-            {{ - . | toYaml | nindent 12 }}
-            {{ - end }}
+            {{- with .extraVolumeMounts }}
+            {{- . | toYaml | nindent 12 }}
+            {{- end }}
           imagePullPolicy: {{ default $.Values.image.pullPolicy .pullPolicy }}
           env:
             - name: RABBITMQ_URI
@@ -59,10 +59,10 @@ spec:
           resources:
             {{- toYaml .resources | nindent 12 }}
 {{- end }}
-      {{ - with .extraVolumes }}
+      {{- with .extraVolumes }}
       volumes:
-        {{ - . | toYaml | nindent 8 }}
-      {{ - end }}
+        {{- . | toYaml | nindent 8 }}
+      {{- end }}
       {{- with .nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
