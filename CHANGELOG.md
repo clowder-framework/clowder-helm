@@ -1,8 +1,8 @@
 # Change Log
 
-## Unreleased 
+## 0.16.7 
 
-**Release date:** 
+**Release date:** 2023-08-16
 
 ![AppVersion: 1.21.0](https://img.shields.io/static/v1?label=AppVersion&message=1.21.0&color=success&logo=)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
