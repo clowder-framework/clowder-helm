@@ -136,6 +136,14 @@ extractors:
     # env:
     #   - name: extractor.bump.sh
     #     value: "bar"
+    extraVolumes: []
+    # - name: input
+    #   persistentVolumeClaim:
+    #     claimName: input
+    extraVolumeMounts: []
+    # - name: input
+    #   mountPath: /input
+    #   readOnly: true
   image-preview:
     image: clowder/extractors-image-preview:2.4.2
   image-metadata:
