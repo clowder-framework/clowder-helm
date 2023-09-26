@@ -13,12 +13,12 @@ description: >
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.16.7
+version: 0.17.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 1.21.0
+appVersion: 1.22.0
 
 # List of people that maintain this helm chart.
 maintainers:
@@ -55,4 +55,7 @@ annotations:
     - name: Helm Chart
       url: https://github.com/clowder-framework/clowder-helm
   artifacthub.io/changes: |
-    - "add volume mounts to clowder extractors"
+    - "update clowder to 1.22.0"
+    - "cleanup files"
+    - "update extractors"
+    - "release version"

@@ -1,5 +1,42 @@
 # Change Log
 
+## 0.17.0 
+
+**Release date:** 2023-09-26
+
+![AppVersion: 1.22.0](https://img.shields.io/static/v1?label=AppVersion&message=1.22.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* update clowder to 1.22.0 
+* cleanup files 
+* update extractors 
+* release version 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 9b9a274..de90680 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -145,11 +145,11 @@ extractors:
+     #   mountPath: /input
+     #   readOnly: true
+   image-preview:
+-    image: clowder/extractors-image-preview:2.4.2
++    image: clowder/extractors-image-preview:2.5.0
+   image-metadata:
+-    image: clowder/extractors-image-metadata:2.1.9
++    image: clowder/extractors-image-metadata:2.2.0
+   audio-preview:
+-    image: clowder/extractors-audio-preview:2.1.9
++    image: clowder/extractors-audio-preview:2.2.0
+   pdf-preview:
+     image: clowder/extractors-pdf-preview:2.1.9
+   video-preview:
+```
+
 ## 0.16.7 
 
 **Release date:** 2023-08-16
@@ -8,7 +45,37 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* add volume mounts to clowder extractors
+* bumped clowder version 
+* added array and renamed data to input 
+* removed extra spaces 
+* updated changelog 
+* removed values keyword 
+* added extravolumes in values 
+* added volume mounts to extractors 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index 82f1c41..9b9a274 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -136,6 +136,14 @@ extractors:
+     # env:
+     #   - name: extractor.bump.sh
+     #     value: "bar"
++    extraVolumes: []
++    # - name: input
++    #   persistentVolumeClaim:
++    #     claimName: input
++    extraVolumeMounts: []
++    # - name: input
++    #   mountPath: /input
++    #   readOnly: true
+   image-preview:
+     image: clowder/extractors-image-preview:2.4.2
+   image-metadata:
+```
 
 ## 0.16.6 
 
