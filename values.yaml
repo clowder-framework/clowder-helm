@@ -145,11 +145,11 @@ extractors:
     #   mountPath: /input
     #   readOnly: true
   image-preview:
-    image: clowder/extractors-image-preview:2.4.2
+    image: clowder/extractors-image-preview:2.5.0
   image-metadata:
-    image: clowder/extractors-image-metadata:2.1.9
+    image: clowder/extractors-image-metadata:2.2.0
   audio-preview:
-    image: clowder/extractors-audio-preview:2.1.9
+    image: clowder/extractors-audio-preview:2.2.0
   pdf-preview:
     image: clowder/extractors-pdf-preview:2.1.9
   video-preview:
