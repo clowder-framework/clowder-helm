@@ -13,7 +13,7 @@ description: >
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.17.0
+version: 0.17.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -55,7 +55,5 @@ annotations:
     - name: Helm Chart
       url: https://github.com/clowder-framework/clowder-helm
   artifacthub.io/changes: |
-    - "update clowder to 1.22.0"
-    - "cleanup files"
-    - "update extractors"
-    - "release version"
+    - "update extractors to fix bug with extractors"
+    - "fix release workflow"

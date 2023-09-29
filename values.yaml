@@ -128,7 +128,7 @@ smtp:
 ## env          : additional environment variables to pass to extractor.
 extractors:
   file-digest:
-    image: clowder/extractors-digest:2.2.4
+    image: clowder/extractors-digest:2.2.5
     # enabled: true
     # replicaCount: 1
     # pullPolicy: Always
@@ -145,15 +145,15 @@ extractors:
     #   mountPath: /input
     #   readOnly: true
   image-preview:
-    image: clowder/extractors-image-preview:2.5.0
+    image: clowder/extractors-image-preview:2.5.1
   image-metadata:
-    image: clowder/extractors-image-metadata:2.2.0
+    image: clowder/extractors-image-metadata:2.2.1
   audio-preview:
-    image: clowder/extractors-audio-preview:2.2.0
+    image: clowder/extractors-audio-preview:2.2.1
   pdf-preview:
-    image: clowder/extractors-pdf-preview:2.1.9
+    image: clowder/extractors-pdf-preview:2.1.10
   video-preview:
-    image: clowder/extractors-video-preview:2.2.3
+    image: clowder/extractors-video-preview:2.2.4
   clamav:
     image: clowder/extractors-clamav:1.0.9
 

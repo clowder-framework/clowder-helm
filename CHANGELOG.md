@@ -1,5 +1,55 @@
 # Change Log
 
+## 0.17.1 
+
+**Release date:** 2023-09-29
+
+![AppVersion: 1.22.0](https://img.shields.io/static/v1?label=AppVersion&message=1.22.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* update extractors to fix bug with extractors 
+* fix release workflow 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index de90680..e7acd93 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -128,7 +128,7 @@ smtp:
+ ## env          : additional environment variables to pass to extractor.
+ extractors:
+   file-digest:
+-    image: clowder/extractors-digest:2.2.4
++    image: clowder/extractors-digest:2.2.5
+     # enabled: true
+     # replicaCount: 1
+     # pullPolicy: Always
+@@ -145,15 +145,15 @@ extractors:
+     #   mountPath: /input
+     #   readOnly: true
+   image-preview:
+-    image: clowder/extractors-image-preview:2.5.0
++    image: clowder/extractors-image-preview:2.5.1
+   image-metadata:
+-    image: clowder/extractors-image-metadata:2.2.0
++    image: clowder/extractors-image-metadata:2.2.1
+   audio-preview:
+-    image: clowder/extractors-audio-preview:2.2.0
++    image: clowder/extractors-audio-preview:2.2.1
+   pdf-preview:
+-    image: clowder/extractors-pdf-preview:2.1.9
++    image: clowder/extractors-pdf-preview:2.1.10
+   video-preview:
+-    image: clowder/extractors-video-preview:2.2.3
++    image: clowder/extractors-video-preview:2.2.4
+   clamav:
+     image: clowder/extractors-clamav:1.0.9
+ 
+```
+
 ## 0.17.0 
 
 **Release date:** 2023-09-26
