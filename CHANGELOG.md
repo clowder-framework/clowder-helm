@@ -1,5 +1,21 @@
 # Change Log
 
+## 0.18.0 
+
+**Release date:** 2023-12-13
+
+![AppVersion: 1.22.1](https://img.shields.io/static/v1?label=AppVersion&message=1.22.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* clowder release 1.22.1 
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 0.17.1 
 
 **Release date:** 2023-09-29
