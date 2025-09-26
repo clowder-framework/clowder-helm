@@ -262,7 +262,8 @@ mongodb:
 
   # clowder works with 3.6 only
   image:
-   tag: 3.6
+    repository: bitnamilegacy/mongodb
+    tag: 3.6
 
   mongodbDisableSystemLog: true
 
@@ -272,6 +273,10 @@ mongodb:
 # rabbitmq
 #
 rabbitmq:
+  image:
+    repository: bitnamilegacy/rabbitmq
+    tag: 3.8.9
+
   # either rabbitmq is installed as part of this chart, or you need to
   # specify the rabbitmq uri. If neither is specified rabbitmq will not
   # be used by clowder.

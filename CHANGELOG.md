@@ -1,5 +1,45 @@
 # Change Log
 
+## 0.20.0 
+
+**Release date:** 2025-09-25
+
+![AppVersion: 1.23.0](https://img.shields.io/static/v1?label=AppVersion&message=1.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* use bitnami legacy 
+
+### Default value changes
+
+```diff
+diff --git a/values.yaml b/values.yaml
+index e7acd93..9fae520 100644
+--- a/values.yaml
++++ b/values.yaml
+@@ -262,7 +262,8 @@ mongodb:
+ 
+   # clowder works with 3.6 only
+   image:
+-   tag: 3.6
++    repository: bitnamilegacy/mongodb
++    tag: 3.6
+ 
+   mongodbDisableSystemLog: true
+ 
+@@ -272,6 +273,10 @@ mongodb:
+ # rabbitmq
+ #
+ rabbitmq:
++  image:
++    repository: bitnamilegacy/rabbitmq
++    tag: 3.8.9
++
+   # either rabbitmq is installed as part of this chart, or you need to
+   # specify the rabbitmq uri. If neither is specified rabbitmq will not
+   # be used by clowder.
+```
+
 ## 0.19.0 
 
 **Release date:** 2025-08-06
