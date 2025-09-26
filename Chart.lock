@@ -1,15 +1,15 @@
 dependencies:
 - name: mongodb
-  repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   version: 7.2.11
 - name: minio
-  repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   version: 3.4.21
 - name: rabbitmq
-  repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   version: 7.6.9
 - name: elasticsearch2
   repository: https://opensource.ncsa.illinois.edu/charts/
   version: 0.2.2
-digest: sha256:3fafde1fcd4f1b34dadf3c61e96fc3e4bb0612539d7ae2297d5547026fa7c9a3
-generated: "2022-06-12T11:40:03.874794-05:00"
+digest: sha256:aece4ba4bb96e93d508283853e9a6cd4718b9ed2b899812003b5bce67d392b0a
+generated: "2025-09-25T20:39:56.424739-05:00"
